@@ -7,7 +7,7 @@ def index(request):
     id_list = NewTweet.objects.values_list('id', flat=True)
     id_list = list(id_list)
     like_list = []
-    for i in id_list :
+    for i in id_list  :
         try:
             if Like.objects.get(new_tweet_id=i) :
                 like = 'いいね！済み'
@@ -18,8 +18,8 @@ def index(request):
     tweets = zip(id_list, tweet_list, like_list)
     tweets = list(tweets)
     f = {
-            'twwets': tweets
-    }
+            'tweets': tweets
+        }
     return render(request, 'index/index.html', f)
 
 def new(request):
@@ -34,7 +34,7 @@ def new(request):
         new_tweet = new_tweet.as_table()
         f = {
             'new_tweet': new_tweet,
-        }
+            }
         return render(request, 'index/new.html', f)
 
 def delete(request, tweet_id):
@@ -53,7 +53,7 @@ def update(request, tweet_id):
         new_tweet = new_tweet.as_table()
         f = {
             'new_tweet': new_tweet,
-        }
+            }
         return render(request, 'index/update.html', f)
 
 def like(request, tweet_id):
