@@ -1,0 +1,9 @@
+<h1>Tclone</h1>
+    {% for i, t, l in tweets %}
+        <ul>
+            <li>
+                {{ t }} <a href="{% url 'update' tweet_id=i %}">編集</a> <a href="{% url 'delete' tweet_id=i %}">削除</a><br>
+                <p><a href="{% url 'like' tweet_id=i %}">{{ l }}</a></p>
+            </li>
+        </ul>
+    {% endfor %}
